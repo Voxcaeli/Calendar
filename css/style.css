@@ -1,0 +1,173 @@
+:root {
+    /* Color templates */
+    --space-color: transparent;
+    --neutral: white;
+    --table-bg-color: gainsboro;
+    --border-color: gainsboro;
+    --caption-color: darkslategray;
+    --caption-shadow-color: slategray;
+    --normal-color: black;
+    --weekend-color: red;
+    --week-color: gray;
+    --week-shadow-color: darkgray;
+    --other-normal-color: darkgray;
+    --other-weekend-color: lightsalmon;
+    --other-background: var(--space-color);
+    --today-outline: var(--normal-color);
+    --today-weekend-outline: var(--weekend-color);
+    --close-color: brown;
+    --hover-color: brown;
+    --active-color: green;
+    --inactive-color: red;
+}
+
+section.calendar {
+    margin: 2rem 3rem;
+    width: 35rem;
+    background-color: var(--space-color);
+    color: black;
+    font-family: "Verdana", "Helvetica", "Tahoma", sans-serif;
+}
+
+.calendar h1 {
+    margin: 1rem;
+    text-align: center;
+    letter-spacing: .75rem;
+}
+
+.calendar table {
+    margin: 0 auto;
+    padding: .2rem;
+    background: var(--table-bg-color);
+    border: groove .2rem var(--border-color);
+    border-top-style: ridge;
+    border-left-style: ridge;
+    border-radius: 1rem;
+    border-spacing: .1rem;
+    font-size: 1.5rem;
+    user-select: none;
+}
+
+/* Month, Year, Navigation */
+.calendar caption {
+    position: relative;
+    margin: .5rem;
+    background-color: var(--space-color);
+    color: var(--caption-color);
+}
+
+.calendar span.title {
+    display: inline-block;
+    width: 13rem;
+}
+
+.calendar button.change-year,
+.calendar button.change-month {
+    margin: 0 .2rem;
+    background-color: var(--space-color);
+    border: none;
+    text-shadow: 0rem 0rem .1rem var(--caption-shadow-color);
+    color: var(--caption-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.calendar button.change-year:hover,
+.calendar button.change-month:hover {
+    transform: scale(1.1);
+}
+
+.calendar button.change-year:active,
+.calendar button.change-month:active {
+    transform: scale(1);
+}
+
+.calendar button.current-month {
+    position: absolute;
+    right: 1rem;
+}
+
+/* Weekdays */
+.calendar th {
+    height: 2rem;
+    padding: .5rem;
+    background-color: var(--space-color);
+}
+
+.calendar th.normal {
+    color: var(--normal-color);
+}
+
+.calendar th.weekend {
+    color: var(--weekend-color);
+}
+
+/* Cells */
+.calendar td {
+    width: 3rem;
+    height: 2rem;
+    padding: .5rem .75rem;
+    border-radius: .3rem;
+    text-align: center;
+}
+
+/* Weeks */
+.calendar td.week,
+.calendar tr:hover td.week:hover {
+    background-color: var(--space-color);
+    color: var(--week-color);
+    text-shadow: 0rem 0rem .1rem var(--week-shadow-color);
+    transform: scale(.8);
+}
+
+.calendar tr:hover td.week {
+    transform: scale(.9);
+}
+
+/* Days */
+.calendar td.normal {
+    color: var(--normal-color);
+    background-color: var(--neutral);
+}
+
+.calendar td.normal:hover {
+    border-radius: .5rem;
+    color: var(--neutral);
+    background-color: var(--normal-color);
+}
+
+.calendar td.weekend,
+.calendar td.holiday {
+    color: var(--weekend-color);
+    background-color: var(--neutral);
+}
+
+.calendar td.weekend:hover,
+.calendar td.holiday:hover {
+    border-radius: .5rem;
+    color: var(--neutral);
+    background-color: var(--weekend-color);
+}
+
+.calendar td.other-normal {
+    color: var(--other-normal-color);
+    background-color: var(--other-background);
+}
+
+.calendar td.other-weekend,
+.calendar td.other-holiday {
+    color: var(--other-weekend-color);
+    background-color: var(--other-background);
+}
+
+/* Today */
+.calendar .today.normal {
+    border-radius: .5rem;
+    outline: solid .1rem var(--today-outline);
+}
+
+.calendar .today.weekend,
+.calendar .today.holiday {
+    border-radius: .5rem;
+    outline: solid .1rem var(--today-weekend-outline);
+}
