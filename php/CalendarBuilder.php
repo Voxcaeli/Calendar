@@ -19,9 +19,10 @@ class CalendarBuilder {
 
     // Отображение табличной структуры календаря
     public function Build() {
-        $result = '<table>' . $this->GetCaption() .
-                              $this->GetHead() .
-                              $this->GetBody() . '</table>';
+        $result = '<h1>' . (Tool::IsEnLang() ? 'Calendar' : 'Календарь') . '</h1>';
+        $result .= '<table>' . $this->GetCaption() .
+                               $this->GetHead() .
+                               $this->GetBody() . '</table>';
         return $result;
     }
 
@@ -37,13 +38,13 @@ class CalendarBuilder {
                       '<button type="submit"
                                class="change-year"
                                name="prev_year_btn"
-                               title="Предыдущий год"
+                               title="' . (Tool::IsEnLang() ? 'Previous year' : 'Предыдущий год') . '"
                                onclick="ChangeTool(\'prev_year\')">&#11164;</button>' .
                       // кнопка переключения на предыдущий месяц
                       '<button type="submit"
                                class="change-month"
                                name="prev_month_btn"
-                               title="Предыдущий месяц"
+                               title="' . (Tool::IsEnLang() ? 'Previous month' : 'Предыдущий месяц') . '"
                                onclick="ChangeTool(\'prev_month\')">&#11160;</button>' .
                       // название текущих месяца и годы
                       '<span class="title">' .
@@ -53,19 +54,19 @@ class CalendarBuilder {
                       '<button type="submit"
                                class="change-month"
                                name="next_month_btn"
-                               title="Следующий месяц"
+                               title="' . (Tool::IsEnLang() ? 'Next month' : 'Следующий месяц') . '"
                                onclick="ChangeTool(\'next_month\')">&#11162;</button>' .
                       // кнопка переключения на следующий год
                       '<button type="submit"
                                class="change-year"
                                name="next_year_btn"
-                               title="Следующий год"
+                               title="' . (Tool::IsEnLang() ? 'Next year' : 'Следующий год') . '"
                                onclick="ChangeTool(\'next_year\')">&#11166;</button>' .
                       // кнопка переключения на текущий месяц
                       '<button type="submit"
                                class="change-month current-month"
                                name="today_btn"
-                               title="Текущий месяц"
+                               title="' . (Tool::IsEnLang() ? 'Current month' : 'Текущий месяц') . '"
                                onclick="ChangeTool(\'current\')">&#9055;</button>' .
                       // скрытое поле, указывающее на код настроек календаря
                       '<input type="hidden"
@@ -104,11 +105,11 @@ class CalendarBuilder {
         
         // список названий дней недели
         $ru_day_names = explode(',', 'Пн,Вт,Ср,Чт,Пт,Сб,Вс');
-        $en_day_names = explode(',', 'Вс,Пн,Вт,Ср,Чт,Пт,Сб');
+        $en_day_names = explode(',', 'Sn,Mo,Tu,We,Th,Fr,Sa');
 
         // определение варианта списка дней недели в зависимости от настроек календаря
-        $day_status = Tool::IsStartWeekFromSunday() ? $en_day_status : $ru_day_status;
-        $day_names = Tool::IsStartWeekFromSunday() ? $en_day_names : $ru_day_names;
+        $day_status = Tool::IsEnLang() ? $en_day_status : $ru_day_status;
+        $day_names = Tool::IsEnLang() ? $en_day_names : $ru_day_names;
 
         $result = '';
 
