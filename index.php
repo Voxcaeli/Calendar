@@ -18,7 +18,6 @@
 <body>
     <form action="index.php" method="post">
         <section class="calendar">
-            <h1>Календарь</h1>
             <?php
                 require_once("php/Calendar.php");
 
