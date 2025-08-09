@@ -34,7 +34,7 @@ class DayCollection {
         $weekday = Helper::GetWeekDay($this->date);
 
         // коррекция номера дня недели
-        if (!Tool::IsStartWeekFromSunday() and $weekday == 0) {
+        if (!Tool::IsEnLang() and $weekday == 0) {
             $weekday = 7;
         }
 
@@ -59,7 +59,7 @@ class DayCollection {
         $all_days_count = Helper::GetDaysCount($prev_month);
 
         // количество отображаемых дней предыдущего месяца
-        $displayed_days_count = Tool::IsStartWeekFromSunday() ?
+        $displayed_days_count = Tool::IsEnLang() ?
                                 $this->begin_weekday :
                                 $this->begin_weekday - 1;
 
@@ -84,7 +84,7 @@ class DayCollection {
         [$day, $days_count] = $this->StartDayDetermination($prev_month);
 
         // день недели
-        $weekday = Tool::IsStartWeekFromSunday() ? 0 : 1;
+        $weekday = Tool::IsEnLang() ? 0 : 1;
 
         // массив отображаемых дней предыдущего месяца
         $days = [];
@@ -134,7 +134,7 @@ class DayCollection {
             $day++;
     
             // коррекция дня недели
-            if (Tool::IsStartWeekFromSunday()) {
+            if (Tool::IsEnLang()) {
                 if ($weekday > 6) {
                     $weekday = 0;
                 }
@@ -160,7 +160,7 @@ class DayCollection {
         $year = Helper::GetYear($next_month);
 
         // количество отображаемых дней следующего месяца
-        $k = Tool::IsStartWeekFromSunday() ? 0 : 1;
+        $k = Tool::IsEnLang() ? 0 : 1;
         // если следующий месяц начинается с начала недели - следующий месяц не отображать
         $days_count = ($weekday === $k) ? 0 : 7 - $weekday + $k;
 
