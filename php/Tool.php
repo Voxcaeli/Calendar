@@ -10,8 +10,8 @@ class Tool {
     // Отображение строки с названиями дней недели
     private static $is_show_weekday_name = true;
 
-    // Отображение начала недели с "воскресенья"
-    private static $is_start_week_from_sunday = false;
+    // Отображение английского варианта календаря
+    private static $en_lang = false;
 
     // Отображение чисел предыдущего и следующего месяцев
     private static $is_show_other_months_days = true;
@@ -83,9 +83,9 @@ class Tool {
         return self::$is_show_weekday_name;
     }
 
-    // Отображение начала недели с "воскресенья"
-    public static function IsStartWeekFromSunday() {
-        return self::$is_start_week_from_sunday;
+    // Отображение английского варианта календаря
+    public static function IsEnLang() {
+        return self::$en_lang;
     }
 
     // Отображение чисел предыдущего и следующего месяцев
