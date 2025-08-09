@@ -16,7 +16,13 @@ class Helper {
 
     // Получение названия месяца
     public static function GetMonthName($date) {
-        $month_names = explode(',', 'Январь,Февраль,Март,Апрель,Май,Июнь,Июль,Август,Сентябрь,Октябрь,Ноябрь,Декабрь');
+        // список названий месяцев
+        $ru_month_names = explode(',', 'Январь,Февраль,Март,Апрель,Май,Июнь,Июль,Август,Сентябрь,Октябрь,Ноябрь,Декабрь');
+        $en_month_names = explode(',', 'January,February,March,April,May,June,July,August,September,October,November,December');
+
+        // определение варианта списка названий месяцев
+        $month_names = Tool::IsEnLang() ? $en_month_names : $ru_month_names;
+
         $index = self::GetMonthNumber($date) - 1;
         return $month_names[$index];
     }
